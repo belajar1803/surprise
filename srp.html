@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teks Besar dengan Gambar Latar Belakang dan Kotak Pesan</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .bg-image {
+            background-image: url('https://wallpapers.com/images/hd/anime-fanart-jp0v8bj0penhyswr.jpg'); /* Ganti dengan URL gambar Anda */
+            filter: blur(8px);
+            -webkit-filter: blur(8px);
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            width: 100%;
+            z-index: -1;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: white;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .text {
+            font-size: 50px;
+            font-weight: bold;
+            z-index: 1;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5); /* Latar belakang semi-transparan untuk teks */
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .message-box {
+            width: 300px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.5); /* Latar belakang semi-transparan untuk kotak pesan */
+            border-radius: 10px;
+            z-index: 1;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .message-box label, .message-box input, .message-box textarea {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .message-box input, .message-box textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .message-box button {
+            padding: 10px;
+            background-color: #454d45;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .message-box button:hover {
+            background-color: #c0c0c0;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-image"></div>
+    <div class="container">
+        <div class="text">
+            Pesan Untuk parel
+        </div>
+        <div class="message-box">
+            <form id="messageForm">
+                <label for="name">Nama:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="message">Pesan:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <button type="submit">Kirim Pesan</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('messageForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+
+            alert(`Nama: ${name}\nPesan: ${message}`);
+        });
+    </script>
+</body>
+</html>
+
+
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top Right Sidebar Menu</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #999494;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-in-out; /* Animasi sliding */
+    z-index: 1000;
+    transform: translateX(200px); /* Mulai menyembunyikan sidebar */
+  }
+
+  .sidebar.open {
+    transform: translateX(0); /* Menampilkan sidebar */
+  }
+
+  .menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    color: #000000;
+    border: 2px solid #ffffff;
+    border-radius: 40px; /* Mengatur sudut yang melengkung */
+    cursor: pointer;
+    outline: none;
+    z-index: 1100;
+
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: #000000;
+    margin: 6px auto;
+    transition: transform 0.3s ease-in-out; /* Animasi garis toggle */
+  }
+
+  .menu-toggle.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .menu-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .menu-items li {
+    margin-bottom: 10px;
+  }
+
+  .menu-items a {
+    display: block;
+    padding: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    border: 2px solid #000;
+    border-radius: 15px; /* Mengatur sudut yang melengkung */
+    transition: background-color 0.3s ease-in-out; /* Animasi background item menu */
+  }
+
+  .menu-items a:hover {
+    background-color: #555;
+  }
+</style>
+</head>
+<body>
+  <div class="sidebar" id="sidebar">
+    <ul class="menu-items">
+      <li><a href="menu.html">Massage</a></li>
+      <li><a href="new_page.html">Photo Anime</a></li>
+      <li><a href="cek_khodam.html">Cek Khodam</a></li>
+      <li><a href="srp.html">Special</a></li>
+  </body>
+    </ul>
+  </div>
+
+<button class="menu-toggle" id="menuToggle" onclick="toggleSidebar()">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<script>
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const menuToggle = document.getElementById('menuToggle');
+
+  sidebar.classList.toggle('open');
+  menuToggle.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
