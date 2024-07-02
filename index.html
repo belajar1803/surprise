@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacked Prank</title>
+    <style>
+        body {
+            background-color: black;
+            color: lime;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .hacked-message {
+            text-align: center;
+        }
+
+        .hacked-message h1 {
+            font-size: 3em;
+        }
+
+        .hacked-message p {
+            font-size: 1.5em;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: lime;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                background-color: transparent;
+            }
+        }
+
+        .warning {
+            color: red;
+            font-size: 1.5em;
+            margin-top: 20px;
+            animation: blink-red 1s step-end infinite;
+        }
+
+        @keyframes blink-red {
+            50% {
+                color: black;
+            }
+        }
+
+        .hacked-file {
+            color: white;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        .hacked-file a {
+            color: red;
+            text-decoration: none;
+        }
+
+        .emoji-container {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 9999;
+        }
+
+        .emoji {
+            position: absolute;
+            font-size: 2em;
+            animation: float 5s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hacked-message">
+        <h1></h1>
+        <p></p>
+        <div class="cursor"></div>
+        <div class="warning" style="display: none;">WARNING: Your system is at risk!</div>
+        <div class="hacked-file" style="display: none;">
+            <p>GOBLOK PENCET LINK NYA GAK DI PENCET AD KEJUTAN <a href="#" download="decryption_tool.exe">https://bayar200k.site</a></p>
+        </div>
+    </div>
+
+    <div class="emoji-container"></div>
+
+    <script>
+        const messages = [
+            "PERANGKATMU SEDANG DI LACAK",
+            "VIRUS SEDANG MENYEBAR..............................................................................................................",
+            "VIRUS BERHASIL MENYEBAR ",
+            "😂😂😂😂😂😂😂😂😂😂😂😂😂😂"
+        ];
+
+        let currentMessage = 0;
+        let currentChar = 0;
+        const displayElement = document.querySelector('.hacked-message');
+        const cursor = document.querySelector('.cursor');
+        const warningElement = document.querySelector('.warning');
+        const hackedFileElement = document.querySelector('.hacked-file');
+        const emojiContainer = document.querySelector('.emoji-container');
+
+        function type() {
+            if (currentChar < messages[currentMessage].length) {
+                displayElement.querySelector('h1').innerHTML = messages[currentMessage].substring(0, currentChar + 1) + '<span class="cursor"></span>';
+                currentChar++;
+                setTimeout(type, 100);
+            } else {
+                currentChar = 0;
+                currentMessage++;
+                if (currentMessage < messages.length) {
+                    setTimeout(type, 1000);
+                } else {
+                    showWarning();
+                }
+            }
+        }
+
+        function showWarning() {
+            warningElement.style.display = 'block';
+            setTimeout(() => {
+                showHackedFile();
+            }, 3000);
+        }
+
+        function showHackedFile() {
+            hackedFileElement.style.display = 'block';
+            setTimeout(() => {
+                showEmojis();
+            }, 3000);
+        }
+
+        function showEmojis() {
+            document.body.style.backgroundColor = 'white';
+            emojiContainer.style.display = 'block';
+            for (let i = 0; i < 100; i++) {
+                createEmoji();
+            }
+            setTimeout(() => {
+                window.location.href = "srp.html"; // Ganti dengan URL halaman baru
+            }, 7000);
+        }
+
+        function createEmoji() {
+            const emoji = document.createElement('div');
+            emoji.classList.add('emoji');
+            emoji.textContent = '😂';
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.animationDuration = Math.random() * 5 + 2 + 's';
+            emojiContainer.appendChild(emoji);
+            setTimeout(() => {
+                emoji.remove();
+            }, 7000);
+        }
+
+        type();
+    </script>
+</body>
+</html>
